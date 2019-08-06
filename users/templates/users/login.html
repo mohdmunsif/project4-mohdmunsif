@@ -1,0 +1,56 @@
+{% extends "users/base.html" %}
+
+{% block style %}
+<style>
+  body>.grid {
+    height: 100%;
+  }
+
+  .image {
+    margin-top: -100px;
+  }
+
+  .column {
+    max-width: 450px;
+  }
+</style>
+{% endblock %}
+
+
+{% block body %}
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui image header">
+      <div class="content">
+        Log-in to your account
+      </div>
+    </h2>
+    <form action="{% url 'users:login' %}" method="post" class="ui large form">
+      <div class="ui stacked secondary  segment">
+        {% csrf_token %}
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="Username">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password">
+          </div>
+        </div>
+        <!-- <div class="ui fluid large blue submit button">Login</div> -->
+        <input type="submit" value="Login" class="ui fluid large blue submit button" />
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <div class="ui message">
+      New to us? <a href="{% url 'users:signup' %}">Register</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
