@@ -46,7 +46,7 @@ def signup(request):
             user = authenticate(username=username, password=raw_password)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect(reverse("cart"))
+                return HttpResponseRedirect(reverse("entries:browse"))
         else:
             return render(request, "users/signup.html", {"form": form})
 
